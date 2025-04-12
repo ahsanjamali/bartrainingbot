@@ -160,39 +160,48 @@ const ChatWidget = () => {
   const formatBotResponse = (text) => {
     if (!text) return text;
 
+    // Remove Japanese style citation markers 【...】
+    text = text.replace(/【.*?】/g, "");
+
+    // Ensure proper word wrapping by adding specific CSS
+    let formattedText = `<div style="word-wrap: break-word; white-space: pre-wrap;">`;
+
     // Format headers (h3 with ###)
-    let formattedText = text.replace(
+    text = text.replace(
       /^###\s+(.*?)$/gm,
       '<h3 style="font-size:18px;font-weight:700;margin:12px 0 8px;color:#333;">$1</h3>'
     );
 
     // Format numbered lists
-    formattedText = formattedText.replace(
+    text = text.replace(
       /(\d+\.\s)([^*\n]+)/g,
       '<span style="display:flex;margin-bottom:4px;"><span style="min-width:20px;font-weight:600;">$1</span><span>$2</span></span>'
     );
 
     // Format bold text
-    formattedText = formattedText.replace(
+    text = text.replace(
       /\*\*(.*?)\*\*/g,
       '<strong style="font-weight:600;color:#4C4CFF;">$1</strong>'
     );
 
     // Format URLs as clickable links
-    formattedText = formattedText.replace(
+    text = text.replace(
       /(https?:\/\/[^\s\)]+)/g,
       '<a href="$1" target="_blank" style="color:#4C4CFF;text-decoration:underline;">link</a>'
     );
 
     // Handle markdown links
-    formattedText = formattedText.replace(
+    text = text.replace(
       /\[(.*?)\]\((https?:\/\/[^\s\)]+)\)/g,
       '<a href="$2" target="_blank" style="color:#4C4CFF;text-decoration:underline;">$1</a>'
     );
 
     // Add spacing between paragraphs
-    formattedText = formattedText.replace(/\n\n/g, "<br><br>");
-    formattedText = formattedText.replace(/\n/g, "<br>");
+    text = text.replace(/\n\n/g, "<br><br>");
+    text = text.replace(/\n/g, "<br>");
+
+    // Close the wrapping div
+    formattedText += text + "</div>";
 
     return formattedText;
   };

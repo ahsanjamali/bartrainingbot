@@ -165,6 +165,10 @@
   font-weight: 500;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .chat-widget-bot-message .chat-widget-message-bubble {
