@@ -509,7 +509,7 @@
     transform: none;
     border-radius: 0;
     padding-top: 10px;
-    padding-bottom: 60px;
+    padding-bottom: 100px;
   }
 
   .chat-widget-header {
@@ -533,11 +533,17 @@
   }
 
   .chat-widget-footer {
-    padding-bottom: 15px;
+    padding-bottom: 30px;
+    padding-top: 15px;
+    margin-bottom: env(safe-area-inset-bottom, 0);
+    position: relative;
+    z-index: 10;
   }
 
   .chat-widget-input-container {
     padding-bottom: 25px;
+    position: relative;
+    z-index: 10;
   }
 }
 
