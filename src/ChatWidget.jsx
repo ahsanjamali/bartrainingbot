@@ -1,26 +1,27 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./ChatWidget.css";
+import botIconImage from "./farhan.png";
 
 const ChatWidget = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [botDetails, setBotDetails] = useState({
-    displayName: "AI Assistant",
+    displayName: "Farhan Bar Training",
     menuConfig: {
       enabled: true,
-      phone: "+1234567890",
-      whatsapp: "+1234567890",
-      email: "contact@example.com",
-      meetingUrl: "https://calendly.com/example",
+      phone: "+923312164771",
+      whatsapp: "+923312164771",
+      email: "info@farhanbartrainingacademy.com",
     },
   });
-  const [botIcon, setBotIcon] = useState("farhan.png");
+  const [botIcon, setBotIcon] = useState(botIconImage);
   const [isTyping, setIsTyping] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showMenuHint, setShowMenuHint] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
   const chatContainerRef = useRef(null);
+  const initializedRef = useRef(false);
 
   // Define the OpenAI assistant ID
   const assistantId = "asst_jzBYR0asK0607iZb5t84nM8M";
@@ -28,14 +29,19 @@ const ChatWidget = () => {
 
   // Initialize chat on mount
   useEffect(() => {
-    // Add welcome message
-    addBotMessage("Hello! How can I help you today?");
+    // Only run initialization once, even if effect runs twice due to StrictMode
+    if (!initializedRef.current) {
+      // Create a new thread
+      createThread();
 
-    // Create a new thread
-    createThread();
+      // Add welcome message
+      addBotMessage("Hello! How can I help you today?");
 
-    // Show menu hint
-    setShowMenuHint(true);
+      // Show menu hint
+      setShowMenuHint(true);
+
+      initializedRef.current = true;
+    }
   }, []);
 
   // Add a function to safely get the API key
@@ -854,7 +860,7 @@ const ChatWidget = () => {
       </div>
 
       {/* Powered by footer */}
-      <div className="chat-widget-footer">
+      {/* <div className="chat-widget-footer">
         <div>
           <span>Powered by</span>
           <a href="https://cresol.ai" target="_blank" rel="noopener noreferrer">
@@ -862,7 +868,7 @@ const ChatWidget = () => {
             CRESOL.Ai
           </a>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
