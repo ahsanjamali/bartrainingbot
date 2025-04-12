@@ -860,15 +860,19 @@ const ChatWidget = () => {
       </div>
 
       {/* Powered by footer */}
-      {/* <div className="chat-widget-footer">
+      <div className="chat-widget-footer">
         <div>
           <span>Powered by</span>
-          <a href="https://cresol.ai" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://remotehyra.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span className="chat-widget-pulse-dot"></span>
-            CRESOL.Ai
+            remotehyra.com
           </a>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
