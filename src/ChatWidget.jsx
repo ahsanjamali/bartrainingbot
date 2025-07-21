@@ -871,14 +871,14 @@ const ChatWidget = () => {
       {/* Powered by footer */}
       <div className="chat-widget-footer">
         <div>
-          <span>Powered by</span>
+          <span>Developed by</span>
           <a
-            href="https://remotehyra.com"
+            href="https://ahsanjamali.me"
             target="_blank"
             rel="noopener noreferrer"
           >
             <span className="chat-widget-pulse-dot"></span>
-            remotehyra.com
+            Ahsan Jamali
           </a>
         </div>
       </div>
